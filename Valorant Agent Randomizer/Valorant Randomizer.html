@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant: Tarot Randomizer</title>
+
+    <style>
+        .content-area {
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            height: 100vh; 
+        }
+
+        .card-container {
+            position: relative;
+            width: 600px;
+            height: 1433px;
+            transform-style: preserve-3d;
+            animation: 0.5s spin ease-in-out forwards 3, 0.40s endSpin 1.5s ease-out forwards;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotateY(180deg);
+            }
+            50% {
+                transform: rotateY(0deg)
+            }
+            100% {
+                transform: rotateY(180deg);
+            }
+        }
+
+        @keyframes endSpin {
+            0% {
+                transform: rotateY(180deg);
+            }
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .card-back,
+        #card-front {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: 1s fadeOut 5s ease-out forwards
+        }
+
+        .card-back {
+            transform: rotateY(180deg); 
+        }
+    </style>
+</head>
+<body>
+    <div class="content-area">
+        <div class="card-container">
+            <div class="card-back"><img src="Valorant0/Blank.png" /></div>
+            <div id="card-front"><img src="Valorant0/Blank.png" /></div>
+        </div>
+    </div>
+
+    <script>
+        var images = [
+            "Valorant0/Astra.png",
+            "Valorant0/Breach.png",
+            "Valorant0/Brimstone.png",
+            "Valorant0/Chamber.png",
+            "Valorant0/Clove.png",
+            "Valorant0/Cypher.png",
+            "Valorant0/Deadlock.png",
+            "Valorant0/Fade.png",
+            "Valorant0/Gekko.png",
+            "Valorant0/Harbor.png",
+            "Valorant0/Iso.png",
+            "Valorant0/Jett.png",
+            "Valorant0/Kayo.png",
+            "Valorant0/Killjoy.png",
+            "Valorant0/Neon.png",
+            "Valorant0/Omen.png",
+            "Valorant0/Pheonix.png",
+            "Valorant0/Raze.png",
+            "Valorant0/Reyna.png",
+            "Valorant0/Sage.png",
+            "Valorant0/Skye.png",
+            "Valorant0/Sova.png",
+            "Valorant0/Tejo.png",
+            "Valorant0/Viper.png",
+            "Valorant0/Vyse.png",
+            "Valorant0/Waylay.png",
+            "Valorant0/Yoru.png",
+        ];
+
+        function displayRandomCard() {
+            var randomIndex = Math.floor(Math.random() * images.length);
+            document.getElementById("card-front").innerHTML = '<img src="' + images[randomIndex] + '" />';
+        }
+
+        window.onload = function() {
+            setTimeout(displayRandomCard, 1500);
+        };
+    </script>
+</body>
+</html>
